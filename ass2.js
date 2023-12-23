@@ -1,3 +1,7 @@
+alert(`Welcome to Hang The Man!
+Enter one letter at a time to guess the right word
+Otherwise he dies..`);
+
 const lives = 3;
 
 const wordList = ['test', 'hangman','code'];
@@ -16,14 +20,15 @@ let displayWord = Array(selectedWord.length).fill('_');
 // Main game loop
 while (incorrectGuesses.length < lives) {
   // Display current state of the word
-  let x = 'Word: ' + displayWord.join(' ');
-  let y = guessedLetters.length > 0 ? 'Guessed Letters: ' + guessedLetters.join(', ') : ""; // join return array as a string?
+  let prompWord = 'Word: ' + displayWord.join(' ');
+  let prompGuess = guessedLetters.length > 0 ? 'Guessed Letters: ' + guessedLetters.join(', ') : ""; // join return array as a string?
 
   let letters = /^[a-zA-Z]{1}$/;
   let guess;
 
   while ( !letters.test(guess)) {
-    guess = prompt(x + '\nEnter a letter!' + '\n'+y);
+    guess = prompt('Enter a letter! \n' + prompGuess + '\n' + prompWord + '\n' + 'Lives left: ' + lives);
+
   }
 
     // show the lives left in the prompt
