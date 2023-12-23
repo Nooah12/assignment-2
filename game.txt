@@ -1,0 +1,56 @@
+1. array with random words as the correct answer? array?
+    -select a random word from array XXX
+    
+2. Create underscores - same length as the word 
+      = variables
+    - saving the underscores as a variable or as a array! 
+    - decide how many lives with a let 
+    - create a msg variable (empty value) 
+
+["_", "_"]
+
+
+        // While loop 3, 4 and 5 run it as long as msg is empty
+
+3. need a prompt with userinput guessing different single letters? 
+    - validate the userinput with regex "is it one single letter"  use it with a varbiable and if or while to check true/false
+    - message if its not a single letter 
+    - while loop to check if the letter is valid
+
+4. Compare the userinput with the correct word with array.include
+    - if statement
+    - if its true replace an underscore with the letter - find the indexOf and change it - or for loop
+    - what if its 2 letters? try later 
+    - if its wrong show a msg 
+    - create another array with "guessletters array" -- outside the if statement!
+    - lives = lives-- (in the else part)
+
+
+5. compare the underscores with the correct word 
+    - if its true set msg "you win"
+    - compare to see if lives > 0
+    - if not set msg = "you loose"
+    
+    // while loop
+    
+
+    
+    
+    -display end message you win or you loose 
+    
+
+
+
+
+
+
+
+
+
+- compare if the input letter is correct? if-statement?
+
+- wrong guess will remove the letter? how? 
+
+- show number of lives remain? how?
+
+- alert to show if win or lose
