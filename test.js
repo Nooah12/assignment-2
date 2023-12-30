@@ -2,11 +2,8 @@ alert(`Welcome to Hang The Man!
 Enter one letter at a time to guess the right word
 Or he dies..`);
 
-// Constants
 let lives = 3;
-
-// Word list
-const wordList = ['code'];
+const wordList = ['test','hangman','code'];
 
 // Select a random word from the list
 const randomIndex = Math.floor(Math.random() * wordList.length);
@@ -21,7 +18,7 @@ let displayWord = Array(selectedWord.length).fill('_');
 
 // Main game loop
 while (lives > 0) {
-  // Display guessed letters and incorrect guesses
+  // Display word and incorrect guesses
   let prompWord = 'Word: ' + displayWord.join(' ');
   let letters = /^[a-zA-Z]{1}$/;
   let guess;
@@ -30,8 +27,6 @@ while (lives > 0) {
     guess = prompt('Enter a letter! \n\n' + prompWord + '\nIncorrect guess: ' + incorrectGuesses + '\nLives left: ' + lives);
   }
 
-
-  
   // Check if the letter has already been guessed
   if (guessedLetters.includes(guess)) {
     alert('You already guessed that letter. Try again.');
@@ -56,7 +51,7 @@ while (lives > 0) {
     break;
   }
   
-  // If the guess is incorrect, add it to the incorrect guesses and decrement maxAttempts
+  // If the guess is incorrect, add it to the incorrect guesses and decrement lives
   if (!correctGuess) {
     incorrectGuesses.push(guess);
     lives--;
