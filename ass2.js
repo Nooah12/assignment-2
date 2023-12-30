@@ -1,14 +1,13 @@
 alert(`Welcome to Hang The Man!
 Enter one letter at a time to guess the right word
-Otherwise he dies..`);
+Or he dies..`);
 
-const lives = 3;
-
-const wordList = ['test', 'hangman','code'];
+let lives = 3;
+const wordList = ['test','hangman','code'];
 
 // Select a random word from the list
-const getRandomWord = Math.floor(Math.random() * wordList.length);
-const selectedWord = wordList[getRandomWord];
+const randomIndex = Math.floor(Math.random() * wordList.length);
+const selectedWord = wordList[randomIndex];
 
 // Arrays to track guessed letters and incorrect guesses
 const guessedLetters = [];
@@ -18,27 +17,25 @@ const incorrectGuesses = [];
 let displayWord = Array(selectedWord.length).fill('_');
 
 // Main game loop
-while (incorrectGuesses.length < lives) {
-  // Display current state of the word
+while (lives > 0) {
+  // Display word and incorrect guesses
   let prompWord = 'Word: ' + displayWord.join(' ');
-  let prompGuess = guessedLetters.length > 0 ? 'Guessed Letters: ' + guessedLetters.join(', ') : ""; // join return array as a string?
-
   let letters = /^[a-zA-Z]{1}$/;
   let guess;
 
-  while ( !letters.test(guess)) {
-    guess = prompt('Enter a letter! \n' + prompGuess + '\n' + prompWord);
-
+  while (!letters.test(guess)) {
+    guess = prompt('Enter a letter! \n\n' + prompWord + '\nIncorrect guess: ' + incorrectGuesses + '\nLives left: ' + lives);
   }
-    // Check if the letter has already been guessed
-    if (guessedLetters.includes(guess)) {
-      alert('You already guessed that letter. Try again.');
-      continue;
-    }
 
-    // Add the guessed letter to the list
-    guessedLetters.push(guess);
-
+  // Check if the letter has already been guessed
+  if (guessedLetters.includes(guess)) {
+    alert('You already guessed that letter. Try again.');
+    continue;
+  }
+  
+  // Add the guessed letter to the list
+  guessedLetters.push(guess);
+  
   // Check if the guess is correct
   let correctGuess = false;
   for (let i = 0; i < selectedWord.length; i++) {
@@ -54,13 +51,14 @@ while (incorrectGuesses.length < lives) {
     break;
   }
   
-  // If the guess is incorrect, add it to the incorrect guesses
+  // If the guess is incorrect, add it to the incorrect guesses and decrement lives
   if (!correctGuess) {
     incorrectGuesses.push(guess);
+    lives--;
   }
 }
 
 // Display final result
-if (incorrectGuesses.length === lives) {
+if (lives === 0) {
   alert('Sorry, you ran out of attempts. The correct word was: ' + selectedWord);
 }
