@@ -1,9 +1,11 @@
 alert(`Welcome to Hang The Man!
 Enter one letter at a time to guess the right word
-Or he dies..`);
+Or the man dies..`);
 
 let lives = 3;
 const wordList = ['test','hangman','code'];
+
+let playAgain = `Do you want to play again? \n(Yes or No)`;
 
 // Select a random word from the list
 const randomIndex = Math.floor(Math.random() * wordList.length);
@@ -23,9 +25,31 @@ while (lives > 0) {
   let letters = /^[a-zA-Z]{1}$/;
   let guess;
 
-  while (!letters.test(guess)) {
-    guess = prompt('Enter a letter! \n\n' + prompWord + '\nIncorrect guess: ' + incorrectGuesses + '\nLives left: ' + lives);
+/*   while (!letters.test(guess)) {
+    guess = prompt('Enter a letter! \n\n' + prompWord + '\nIncorrect guess: ' + incorrectGuesses + '\nLives left: ' + lives).toLowerCase();
+  } */
+
+  guess = prompt('Enter a letter! \n\n' + prompWord + '\nIncorrect guess: ' + incorrectGuesses + '\nLives left: ' + lives).toLowerCase();
+
+/*   if (guess === null) {
+    alert(`Are you sure you wanna quit??`);
+    break;
+  }  */
+
+  if (guess === null) {
+    const quitGame = confirm('Do you want to quit the game?');
+    if (quitGame) {
+      break; // Exit the loop if the user wants to quit
+    } else {
+      continue; // Continue the loop if the user wants to keep playing
+    }
   }
+
+    // Check if the input is a letter between 'a' and 'z'
+    if (!letters.test(guess)) {
+      alert('Enter a valid letter between A and Z.');
+      continue;
+    }
 
   // Check if the letter has already been guessed
   if (guessedLetters.includes(guess)) {
@@ -56,6 +80,7 @@ while (lives > 0) {
     incorrectGuesses.push(guess);
     lives--;
   }
+
 }
 
 // Display final result
