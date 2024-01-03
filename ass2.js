@@ -6,7 +6,7 @@ const playHangman = () => {
   Or the man will die..`)
 
   let lives = 3;
-  const wordList = ['test','hangman','code'];
+  const wordList = ['test','hangman','code','javascript'];
 
   // Select a random word from the list
   const randomIndex = Math.floor(Math.random() * wordList.length);
